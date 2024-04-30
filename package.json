@@ -1,0 +1,13 @@
+{
+  "name": "blogify",
+  "scripts": {
+    "build": "lerna run build",
+    "prettier:format": "prettier --ignore-path .prettierignore -w ."
+  },
+  "dependencies": {
+    "lerna": "^8.1.2"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5"
+  }
+}
