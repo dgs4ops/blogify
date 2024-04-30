@@ -1,0 +1,3 @@
+INSERT INTO blogify_articles ("id", "createdAt", "createdBy", "updatedAt", "updatedBy", "content", "title", "introduction")
+VALUES
+('4faafc45-b8a6-40d8-b063-ce8ffd839ab1', CURRENT_TIMESTAMP, (SELECT id FROM blogify_authors WHERE "displayName" = 'felix.schnellert'), CURRENT_TIMESTAMP, (SELECT id FROM blogify_authors WHERE "displayName" = 'felix.schnellert'), 'correct content here :)', 'GCP vs. AWS', 'Some small text about my first blog article.');
