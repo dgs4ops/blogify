@@ -1,0 +1,65 @@
+<div class="absolute -inset-x-0.5 flex flex-col min-w-0 overflow-y-auto" cdkScrollable>
+  <!-- Header -->
+  <div class="relative flex-0 py-8 px-4 sm:p-16 overflow-hidden bg-gray-800 dark">
+
+    <!-- Rings -->
+    <svg class="absolute inset-0 pointer-events-none" viewBox="0 0 1060 340" width="100%" height="100%" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+      <g class="text-gray-700 opacity-25" fill="none" stroke="currentColor" stroke-width="100">
+        <circle r="234" cx="196" cy="23"></circle>
+        <circle r="234" cx="790" cy="491"></circle>
+      </g>
+    </svg>
+    <!-- Title -->
+    <div class="z-10 relative flex flex-col items-center">
+      <h2 class="text-xl font-semibold">Lorem Ipsum</h2>
+      <div class="mt-1 text-4xl sm:text-7xl font-extrabold tracking-tight leading-tight text-center">Lorem Ipsum</div>
+      <div class="max-w-2xl mt-6 sm:text-2xl text-center tracking-tight text-secondary">Lorem Ipsum Dala odem Ipsum</div>
+    </div>
+  </div>
+
+  <!-- Create Article -->
+  <button class="w-30 place-self-center mt-3" mat-flat-button (click)="openDialog()" [color]="'primary'">Create Article</button>
+
+  <!-- Filter newest and Oldest -->
+  <mat-form-field class="w-50 place-self-start -mt-10 ml-12">
+    <mat-select placeholder="Filter" [(value)]="defaultSelectedDirection" (selectionChange)="update($event.value)">
+      <mat-option value="asc">Älteste zuerst</mat-option>
+      <mat-option value="desc">Neuste zuerst</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Display Articles -->
+  <div class="grid sm:grid-cols-2 lg:grid-cols-2 gap-8 mt-8 sm:mt-10">
+    <div *ngFor="let article of articles?.data">
+      <div class="sm:w-auto py-1 px-4 sm:p-12 sm:rounded-2xl sm:shadow sm:bg-card mr-10 ml-10">
+        <div class="max-w-80 sm:w-80 mx-auto sm:mx-0">
+          <div class="mt-4 text-lg font-medium">
+            <markdown [data]="article.title"></markdown>
+          </div>
+          <div class="mt-0.5 line-clamp-2 text-secondary">
+            <markdown [data]="authorAndDate(article)"></markdown>
+          </div>
+          <div class="w-20 h-1 my-2 border-t-2"></div>
+          <div class="mt-0.5 line-clamp-2 text-secondary">
+            <markdown [data]="article.introduction"></markdown>
+          </div>
+        </div>
+
+        <!-- Feature Buttons -->
+        <div class="flex flex-col-3 w-full mt-auto place-items-end">
+          <button class="w-30 mt-5" mat-flat-button (click)="logButtonValue(article.id)" [color]="'primary'">
+            <span>Continue</span>
+          </button>
+          <button class="w-30 ml-5" mat-flat-button (click)="deleteArticle(article.id)" [color]="'primary'">
+            <span>Delete</span>
+          </button>
+          <button class="w-30 ml-5" mat-flat-button (click)="editArticle(article.id)" [color]="'primary'">
+            <span>Edit</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Paginator -->
+  <mat-paginator class="dark w-full mt-5" [length]="100" [pageSize]="articlesPerPage" [pageSizeOptions]="[10, 20]" aria-label="Select page" (page)="handlePageSwitch($event)"></mat-paginator>
+</div>
