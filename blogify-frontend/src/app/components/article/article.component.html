@@ -1,0 +1,12 @@
+<!-- Display Article with Markdown Text -->
+<div class="flex flex-col flex-auto items-center sm:justify-center min-w-0 min-h-screen">
+  <div class="sm:w-auto py-1 mt-10 mb-10 px-4 sm:p-10 sm:rounded-2xl sm:shadow sm:bg-card">
+    <div class="max-w-200 sm:w-200 mx-auto sm:mx-0">
+      <div class="mt-4 text-3xl font-bold"><markdown [data]="article?.title">TEST TEST TEST</markdown></div>
+      <div class="mt-0.5 line-clamp-2 text-secondary"><markdown [data]="asDateString(article?.createdAt)"></markdown></div>
+      <div class="mt-0.5 line-clamp-2 text-secondary"><markdown [data]="article?.author?.displayName"></markdown></div>
+      <div class="w-20 h-1 my-2 border-t-2"></div>
+      <div class="mt-0.5 text-secondary"><markdown [data]="article?.content"></markdown></div>
+    </div>
+  </div>
+</div>
