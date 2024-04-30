@@ -1,0 +1,15 @@
+name: 'Blogify backend jobs'
+
+on:
+  push:
+    branches: ['master']
+    paths:
+      - 'blogify-backend/**'
+
+jobs:
+  hello_world:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Say hello'
+        run: |
+          echo "Hello, world!"
